@@ -93,12 +93,28 @@
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+- (NSDate *)cm_dateBySubtractingYears:(NSInteger)years {
+
+    return [self cm_dateByAddingYears:(years * -1)];
+
+}
+
+
+
 - (NSDate *)cm_dateByAddingMonths:(NSInteger)months {
     NSCalendar *calendar = [NSCalendar currentCalendar];
     NSDateComponents *components = [[NSDateComponents alloc] init];
     [components setMonth:months];
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
+
+- (NSDate *)cm_dateBySubtractingMonths:(NSInteger)months {
+    
+    return [self cm_dateByAddingMonths:(months * -1)];
+    
+}
+
+
 
 - (NSDate *)cm_dateByAddingWeeks:(NSInteger)weeks {
     NSCalendar *calendar = [NSCalendar currentCalendar];
@@ -107,11 +123,30 @@
     return [calendar dateByAddingComponents:components toDate:self options:0];
 }
 
+- (NSDate *)cm_dateBySubtractingWeeks:(NSInteger)weeks {
+    
+    return [self cm_dateByAddingWeeks:(weeks * -1)];
+    
+}
+
+
+
+
+
 - (NSDate *)cm_dateByAddingDays:(NSInteger)days {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 86400 * days;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
+
+- (NSDate *)cm_dateBySubtractingDays:(NSInteger)days {
+    
+    return [self cm_dateByAddingDays:(days * -1)];
+
+}
+
+
+
 
 - (NSDate *)cm_dateByAddingHours:(NSInteger)hours {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 3600 * hours;
@@ -119,11 +154,27 @@
     return newDate;
 }
 
+- (NSDate *)cm_dateBySubtractingHours:(NSInteger)hours {
+    
+    return [self cm_dateByAddingHours:(hours * -1)];
+}
+
+
+
 - (NSDate *)cm_dateByAddingMinutes:(NSInteger)minutes {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + 60 * minutes;
     NSDate *newDate = [NSDate dateWithTimeIntervalSinceReferenceDate:aTimeInterval];
     return newDate;
 }
+
+- (NSDate *)cm_dateBySubtractingMinutes:(NSInteger)minutes {
+    
+    return [self cm_dateByAddingMinutes:(minutes * -1)];
+
+    
+}
+
+
 
 - (NSDate *)cm_dateByAddingSeconds:(NSInteger)seconds {
     NSTimeInterval aTimeInterval = [self timeIntervalSinceReferenceDate] + seconds;
@@ -131,11 +182,17 @@
     return newDate;
 }
 
+- (NSDate *)cm_dateBySubtractingSeconds:(NSInteger)seconds {
+    
+    return [self cm_dateByAddingSeconds:(seconds * -1)];
+}
+
 
 
 #pragma mark - Date Format
 
 - (NSString *)cm_stringWithFormat:(NSString *)format {
+   
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     [formatter setLocale:[NSLocale currentLocale]];
@@ -144,6 +201,7 @@
 }
 
 - (NSString *)cm_stringWithFormat:(NSString *)format timeZone:(NSTimeZone *)timeZone locale:(NSLocale *)locale {
+    
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateFormat:format];
     if (timeZone) [formatter setTimeZone:timeZone];

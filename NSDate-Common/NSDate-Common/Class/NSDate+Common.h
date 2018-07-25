@@ -29,27 +29,28 @@
 @property (nonatomic, readonly) BOOL cm_isYesterday;
 
 
-#pragma mark --- Add
+#pragma mark --- Caculate （日期的计算，加/减）
 
 - (nullable NSDate *)cm_dateByAddingYears:(NSInteger)years;
+- (NSDate *)cm_dateBySubtractingYears:(NSInteger)years ;
 
-
-- (NSDate *) cm_dateBySubtractingMonths: (NSInteger)Months;
+- (NSDate *) cm_dateBySubtractingMonths: (NSInteger)months;
 - (nullable NSDate *)cm_dateByAddingMonths:(NSInteger)months;
 
 - (nullable NSDate *)cm_dateByAddingWeeks:(NSInteger)weeks;
+- (NSDate *)cm_dateBySubtractingWeeks:(NSInteger)weeks ;
 
-- (NSDate *) cm_dateBySubtractingDays: (NSInteger)Days;
+- (NSDate *) cm_dateBySubtractingDays: (NSInteger)days;
 - (nullable NSDate *)cm_dateByAddingDays:(NSInteger)days;
 
-- (NSDate *) cm_dateBySubtractingHours: (NSInteger)Hours;
+- (NSDate *) cm_dateBySubtractingHours: (NSInteger)hours;
 - (nullable NSDate *)cm_dateByAddingHours:(NSInteger)hours;
 
-- (NSDate *) cm_dateBySubtractingMinutes: (NSInteger)Minutes;
+- (NSDate *) cm_dateBySubtractingMinutes: (NSInteger)minutes;
 - (nullable NSDate *)cm_dateByAddingMinutes:(NSInteger)minutes;
 
 - (nullable NSDate *)cm_dateByAddingSeconds:(NSInteger)seconds;
-
+- (NSDate *)cm_dateBySubtractingSeconds:(NSInteger)seconds ;
 
 
 
